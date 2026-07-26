@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Block nothing — all sections are public and indexable
+
+Sitemap: https://primecleanco.co.uk/sitemap.xml

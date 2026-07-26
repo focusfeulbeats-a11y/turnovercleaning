@@ -1,0 +1,23 @@
+{
+  "name": "Prime Clean Co.",
+  "short_name": "Prime Clean",
+  "description": "Dependable turnover cleaning for London short-let hosts — Airbnb, Booking.com and B&B changeovers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf8f3",
+  "theme_color": "#0e6a52",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
