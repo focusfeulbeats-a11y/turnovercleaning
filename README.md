@@ -28,16 +28,25 @@ In Vercel: **Project → Settings → Domains → Add**. Buy one through Vercel 
 
 ## Make the contact form actually send
 
-Right now the form shows a success toast but doesn't transmit anywhere. Two easy options:
+The form is **already wired to Formspree** — the only thing left is to drop in your own Formspree endpoint.
 
-### Option A — Formspree (zero code, free tier)
-1. Sign up at [formspree.io](https://formspree.io) and create a form. You'll get an endpoint like `https://formspree.io/f/abcdwxyz`.
-2. In `index.html`, find the `<form class="quote" id="quoteForm">` line and add `action="https://formspree.io/f/abcdwxyz" method="POST"`.
-3. Remove the `e.preventDefault()` line in the script (or keep it and `fetch()` to Formspree for a smoother UX).
-4. Submissions land in your inbox.
+### One step: add your Formspree ID
+1. Sign up free at [formspree.io](https://formspree.io) and create a new form. You'll get an endpoint like `https://formspree.io/f/abcdwxyz`.
+2. Open `index.html` and find this line near the contact form:
+   ```
+   action="https://formspree.io/f/REPLACE_ME"
+   ```
+3. Replace `REPLACE_ME` with your form's ID (e.g. `abcdwxyz`). Save. Push.
+4. Submissions will now land in your Formspree inbox and forward to your email. The form already sends these fields: `name`, `phone`, `email`, `postcode`, `property_type`, `changeover_date`, `message`.
 
-### Option B — Vercel serverless function
-Add `/api/quote.js` and POST to it. See [Vercel docs](https://vercel.com/docs/functions/serverless-functions). More setup, but no third party.
+### Why it works without a backend
+- The form `POST`s to Formspree via `fetch()`, so the user stays on your site and sees a success toast — no page reload.
+- A hidden honeypot field (`_gotcha`) blocks spam bots.
+- `_subject` controls the email subject line; `_template=table` makes submissions readable; `_captcha=false` keeps the UX clean (Formspree's own dashboard still filters spam).
+- If JavaScript is off or the network fails, the form falls back to a normal browser POST — submissions still arrive, just on a Formspree thank-you page.
+
+### Pricing
+Formspree's free tier covers 50 submissions/month, which is plenty to start. Upgrade only when quote volume grows.
 
 ## Things to personalise before going live
 

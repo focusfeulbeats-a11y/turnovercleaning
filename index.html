@@ -21,7 +21,7 @@
   --shadow:0 10px 30px rgba(15,28,46,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;color-scheme:light}
 body{
   font-family:'Inter',system-ui,-apple-system,sans-serif;
   color:var(--ink);
@@ -109,7 +109,7 @@ img{max-width:100%;display:block}
 .mini-form label{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px}
 .mini-form input,.mini-form select{
   width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;
-  font-family:inherit;font-size:14px;background:var(--paper);margin-bottom:12px;
+  font-family:inherit;font-size:14px;color:var(--ink);background:var(--paper);margin-bottom:12px;
 }
 .mini-form input:focus,.mini-form select:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
 .mini-form .btn{width:100%}
@@ -237,7 +237,7 @@ form.quote .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 form.quote label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
 form.quote input,form.quote select,form.quote textarea{
   width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;
-  font-family:inherit;font-size:14px;background:var(--paper);margin-bottom:14px;
+  font-family:inherit;font-size:14px;color:var(--ink);background:var(--paper);margin-bottom:14px;
 }
 form.quote input:focus,form.quote select:focus,form.quote textarea:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
 form.quote .btn{width:100%;margin-top:6px}
@@ -532,25 +532,32 @@ footer ul li a:hover{color:var(--accent)}
         <div><b>Working hours</b><span>Mon–Sun, 8am – 7pm</span></div>
       </div>
     </div>
-    <form class="quote" id="quoteForm">
+    <form class="quote" id="quoteForm"
+          action="https://formspree.io/f/xqergrzv"
+          method="POST">
+      <!-- Formspree hidden config -->
+      <input type="hidden" name="_subject" value="New quote request — Turnover Cleaning Co." />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <div class="row">
         <div>
           <label for="qName">Your name</label>
-          <input id="qName" type="text" placeholder="Jane Host" required />
+          <input id="qName" name="name" type="text" placeholder="Jane Host" required />
         </div>
         <div>
           <label for="qPhone">Phone</label>
-          <input id="qPhone" type="tel" placeholder="07700 900000" required />
+          <input id="qPhone" name="phone" type="tel" placeholder="07700 900000" required />
         </div>
       </div>
       <div class="row">
         <div>
           <label for="qPostcode">Property postcode</label>
-          <input id="qPostcode" type="text" placeholder="CT1 1AA" required />
+          <input id="qPostcode" name="postcode" type="text" placeholder="CT1 1AA" required />
         </div>
         <div>
           <label for="qType">Property type</label>
-          <select id="qType" required>
+          <select id="qType" name="property_type" required>
             <option value="">Select…</option>
             <option>1-bedroom let</option>
             <option>2–3 bedroom let</option>
@@ -560,12 +567,16 @@ footer ul li a:hover{color:var(--accent)}
         </div>
       </div>
       <div>
+        <label for="qEmail">Email (so we can send the quote)</label>
+        <input id="qEmail" name="email" type="email" placeholder="jane@example.com" required />
+      </div>
+      <div>
         <label for="qDate">Next changeover date</label>
-        <input id="qDate" type="date" required />
+        <input id="qDate" name="changeover_date" type="date" required />
       </div>
       <div>
         <label for="qMsg">Anything we should know?</label>
-        <textarea id="qMsg" rows="3" placeholder="Linen supplied on site, lockbox at side gate, etc."></textarea>
+        <textarea id="qMsg" name="message" rows="3" placeholder="Linen supplied on site, lockbox at side gate, etc."></textarea>
       </div>
       <button type="submit" class="btn">Send quote request</button>
       <p class="form-note">We reply within the hour during working days. No spam, ever.</p>
@@ -639,14 +650,41 @@ document.getElementById('miniForm').addEventListener('submit', e => {
   for(const opt of qType.options){ if(opt.text === sel.value){ qType.value = opt.value || opt.text; break; } }
 });
 
-// Quote form — front-end only (wire up to Formspree / Vercel function later)
-document.getElementById('quoteForm').addEventListener('submit', e => {
+// Quote form — submits to Formspree via fetch, no page reload
+const quoteForm = document.getElementById('quoteForm');
+const FORMSPREE_ENDPOINT = quoteForm.getAttribute('action'); // set in HTML
+quoteForm.addEventListener('submit', async e => {
   e.preventDefault();
+  const submitBtn = quoteForm.querySelector('button[type="submit"]');
   const name = document.getElementById('qName').value.trim();
   if(!name) return;
-  // TODO: replace with real submission (Formspree action, or a Vercel serverless function)
-  showToast(`Thanks ${name.split(' ')[0]} — request received. We'll reply within the hour.`);
-  e.target.reset();
+
+  submitBtn.disabled = true;
+  const originalLabel = submitBtn.textContent;
+  submitBtn.textContent = 'Sending…';
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(quoteForm)
+    });
+
+    if (res.ok) {
+      showToast(`Thanks ${name.split(' ')[0]} — request received. We'll reply within the hour.`);
+      quoteForm.reset();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      const err = data?.errors?.[0]?.message || 'Please try again or call us.';
+      showToast(`Could not send: ${err}`);
+    }
+  } catch (err) {
+    // Network / offline — the browser will fall back to a normal POST submit
+    showToast('No connection — try again, or call us on 07700 900 000.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalLabel;
+  }
 });
 
 // Set min date on date picker to today
