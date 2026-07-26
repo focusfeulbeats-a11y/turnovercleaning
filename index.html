@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Turnover Cleaning Co. — Dependable Holiday Let Cleaning</title>
+<meta name="description" content="Dependable turnover cleaning for B&Bs, Airbnb and self-catering holiday lets. Linen change, restocking, check-in prep. Same-day service between check-out and check-in." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f1c2e;
+  --ink-soft:#3a4a5e;
+  --paper:#fbf8f3;
+  --paper-2:#f3ede2;
+  --brand:#0e6a52;
+  --brand-2:#0a4d3c;
+  --accent:#c79a3a;
+  --line:#e4ddcf;
+  --shadow:0 10px 30px rgba(15,28,46,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.15;font-weight:600;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1140px,92%);margin:0 auto}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,248,243,.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+.brand-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;color:#fff;font-weight:800;font-family:'Inter';
+  box-shadow:0 4px 10px rgba(14,106,82,.3);
+}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:14.5px;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--brand)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--brand);color:#fff;font-weight:600;font-size:15px;
+  padding:13px 22px;border-radius:10px;border:none;cursor:pointer;
+  transition:transform .15s ease,background .2s ease,box-shadow .2s ease;
+  box-shadow:0 6px 16px rgba(14,106,82,.25);
+}
+.btn:hover{background:var(--brand-2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--brand);box-shadow:none;border:1.5px solid var(--brand)}
+.btn-ghost:hover{background:var(--brand);color:#fff}
+.burger{display:none;background:none;border:none;cursor:pointer;font-size:24px;color:var(--ink)}
+
+/* ============ HERO ============ */
+.hero{padding:80px 0 70px;position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(700px 380px at 80% -10%, rgba(199,154,58,.18), transparent 60%),
+    radial-gradient(600px 360px at -5% 20%, rgba(14,106,82,.10), transparent 60%);
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--paper-2);border:1px solid var(--line);
+  padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:var(--brand-2);
+  margin-bottom:22px;
+}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(14,106,82,.15)}
+.hero h1{font-size:clamp(38px,5.2vw,60px);margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+.hero p.lead{font-size:19px;color:var(--ink-soft);max-width:540px;margin-bottom:30px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.trust-row{display:flex;gap:30px;margin-top:38px;flex-wrap:wrap}
+.trust-item{display:flex;flex-direction:column}
+.trust-num{font-family:'Fraunces';font-size:28px;color:var(--brand);font-weight:600}
+.trust-label{font-size:13px;color:var(--ink-soft);font-weight:500}
+
+.hero-card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:30px;box-shadow:var(--shadow);position:relative;
+}
+.hero-card h3{font-size:20px;margin-bottom:18px}
+.hero-card::after{
+  content:"";position:absolute;top:-1px;right:-1px;width:80px;height:80px;
+  background:linear-gradient(135deg,var(--accent),transparent);
+  border-radius:0 18px 0 80px;opacity:.25;
+}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:14px}
+.checklist li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft)}
+.checklist .tick{
+  flex-shrink:0;width:22px;height:22px;border-radius:6px;
+  background:rgba(14,106,82,.12);color:var(--brand);
+  display:grid;place-items:center;font-size:13px;font-weight:800;margin-top:1px;
+}
+.mini-form{margin-top:22px;border-top:1px dashed var(--line);padding-top:20px}
+.mini-form label{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px}
+.mini-form input,.mini-form select{
+  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;
+  font-family:inherit;font-size:14px;background:var(--paper);margin-bottom:12px;
+}
+.mini-form input:focus,.mini-form select:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
+.mini-form .btn{width:100%}
+
+/* ============ SECTIONS ============ */
+section{padding:80px 0}
+.section-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.section-tag{font-size:13px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
+.section-head h2{font-size:clamp(30px,4vw,44px);margin-bottom:14px}
+.section-head p{color:var(--ink-soft);font-size:17px}
+
+/* Services */
+.services{background:linear-gradient(180deg,var(--paper) 0%, #fff 100%)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--brand)}
+.svc-icon{
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,var(--paper-2),#fff);
+  border:1px solid var(--line);
+  display:grid;place-items:center;font-size:24px;margin-bottom:18px;
+}
+.svc h3{font-size:21px;margin-bottom:10px}
+.svc p{color:var(--ink-soft);font-size:15px}
+.svc .price{margin-top:16px;font-size:13px;color:var(--brand);font-weight:700;letter-spacing:.04em}
+
+/* Why dependability matters */
+.depend{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.depend::before{
+  content:"";position:absolute;inset:0;z-index:0;opacity:.5;
+  background:radial-gradient(600px 300px at 90% 0%, rgba(14,106,82,.35), transparent 60%);
+}
+.depend .wrap{position:relative;z-index:1}
+.depend .section-head h2,.depend .section-tag{color:#fff}
+.depend .section-tag{color:var(--accent)}
+.depend .section-head p{color:rgba(255,255,255,.75)}
+.depend-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:20px}
+.depend-quote{
+  font-family:'Fraunces';font-size:26px;line-height:1.4;font-style:italic;
+  color:#fff;border-left:3px solid var(--accent);padding-left:24px;
+}
+.depend-quote cite{display:block;margin-top:18px;font-size:14px;font-style:normal;color:rgba(255,255,255,.7);font-family:'Inter'}
+.depend-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+.depend-list li{display:flex;gap:14px;align-items:flex-start}
+.depend-list .num{
+  flex-shrink:0;width:34px;height:34px;border-radius:50%;
+  background:rgba(199,154,58,.15);color:var(--accent);
+  display:grid;place-items:center;font-weight:700;font-size:15px;
+}
+.depend-list h4{font-size:16px;margin-bottom:4px}
+.depend-list p{color:rgba(255,255,255,.7);font-size:14.5px}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
+.step{position:relative;padding-top:50px}
+.step::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;top:0;left:0;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--brand);color:#fff;font-weight:700;
+  display:grid;place-items:center;font-size:16px;
+  box-shadow:0 6px 14px rgba(14,106,82,.3);
+}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{color:var(--ink-soft);font-size:14.5px}
+
+/* Coverage */
+.coverage{background:var(--paper-2)}
+.coverage-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.coverage h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:16px}
+.coverage p{color:var(--ink-soft);font-size:16px;margin-bottom:20px}
+.coverage ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.coverage li{
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:8px 16px;font-size:14px;font-weight:500;
+}
+.coverage-map{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;
+  text-align:center;box-shadow:var(--shadow);
+}
+.coverage-map .pin{font-size:40px;margin-bottom:10px}
+.coverage-map h4{font-family:'Fraunces';font-size:22px;margin-bottom:6px}
+.coverage-map p{font-size:14px;color:var(--ink-soft);margin:0}
+
+/* Testimonials */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tst{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;
+  position:relative;
+}
+.tst .stars{color:var(--accent);font-size:16px;letter-spacing:2px;margin-bottom:14px}
+.tst p{font-size:15px;color:var(--ink-soft);margin-bottom:18px;font-style:italic}
+.tst .who{display:flex;align-items:center;gap:12px}
+.tst .avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#fff;display:grid;place-items:center;font-weight:700;
+}
+.tst .who b{font-size:14px;display:block}
+.tst .who span{font-size:13px;color:var(--ink-soft)}
+
+/* Pricing / Quote */
+.quote-cta{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;text-align:center}
+.quote-cta h2{font-size:clamp(30px,4vw,44px);margin-bottom:14px}
+.quote-cta p{color:rgba(255,255,255,.85);font-size:17px;max-width:560px;margin:0 auto 30px}
+.quote-cta .btn{background:#fff;color:var(--brand-2);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.quote-cta .btn:hover{background:var(--paper-2);transform:translateY(-1px)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-info h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:16px}
+.contact-info p{color:var(--ink-soft);margin-bottom:24px}
+.contact-detail{display:flex;gap:14px;align-items:center;margin-bottom:18px}
+.contact-detail .ic{
+  width:44px;height:44px;border-radius:10px;background:var(--paper-2);
+  display:grid;place-items:center;font-size:18px;
+}
+.contact-detail b{display:block;font-size:15px}
+.contact-detail span{font-size:14px;color:var(--ink-soft)}
+form.quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:var(--shadow)}
+form.quote .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form.quote label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+form.quote input,form.quote select,form.quote textarea{
+  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;
+  font-family:inherit;font-size:14px;background:var(--paper);margin-bottom:14px;
+}
+form.quote input:focus,form.quote select:focus,form.quote textarea:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
+form.quote .btn{width:100%;margin-top:6px}
+.form-note{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:10px}
+
+/* Footer */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:50px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:30px}
+footer .brand{color:#fff;margin-bottom:14px}
+footer p{font-size:14px;max-width:340px}
+footer h5{color:#fff;font-size:14px;margin-bottom:14px;font-family:'Inter';font-weight:600}
+footer ul{list-style:none}
+footer ul li{margin-bottom:8px;font-size:14px}
+footer ul li a:hover{color:var(--accent)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:10px}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);
+  background:var(--ink);color:#fff;padding:14px 22px;border-radius:12px;
+  font-size:14.5px;font-weight:500;box-shadow:0 12px 30px rgba(0,0,0,.2);
+  z-index:100;transition:transform .35s cubic-bezier(.2,.9,.3,1.2);
+  display:flex;align-items:center;gap:10px;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast .ic{color:var(--accent)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:920px){
+  .hero-grid,.depend-grid,.coverage-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .svc-grid,.tst-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+    background:var(--paper);padding:20px;border-bottom:1px solid var(--line);gap:16px;
+  }
+  .svc-grid,.tst-grid,.steps{grid-template-columns:1fr}
+  form.quote .row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero{padding:50px 0 40px}
+  section{padding:55px 0}
+  .trust-row{gap:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">T</span>
+      <span>Turnover Cleaning Co.</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#why">Why us</a>
+      <a href="#how">How it works</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="btn" style="padding:10px 18px">Get a quote</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Same-day turnover specialists</span>
+      <h1>Holiday let cleaning you can <em>actually rely on</em>.</h1>
+      <p class="lead">We handle check-out-to-check-in turnover for B&amp;Bs, Airbnb hosts and self-catering owners — linen changed, rooms reset, keys handed back ready for the next guest. Every time.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn">Request a quote</a>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><span class="trust-num">100%</span><span class="trust-label">Show-up rate</span></div>
+        <div class="trust-item"><span class="trust-num">4.9★</span><span class="trust-label">Host rating</span></div>
+        <div class="trust-item"><span class="trust-num">&lt;3hr</span><span class="trust-label">Typical turnaround</span></div>
+        <div class="trust-item"><span class="trust-num">7 days</span><span class="trust-label">Weekend cover</span></div>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <h3>What's included in a turnover</h3>
+      <ul class="checklist">
+        <li><span class="tick">✓</span> Strip &amp; remake beds with fresh linen</li>
+        <li><span class="tick">✓</span> Bathroom deep-clean &amp; towel swap</li>
+        <li><span class="tick">✓</span> Kitchen reset, bins emptied, floors mopped</li>
+        <li><span class="tick">✓</span> Restock tea, coffee, soap &amp; toilet paper</li>
+        <li><span class="tick">✓</span> Photo confirmation before check-in</li>
+      </ul>
+      <form class="mini-form" id="miniForm">
+        <label for="miniProperty">Quick quote — what do you host?</label>
+        <select id="miniProperty" required>
+          <option value="">Select property type…</option>
+          <option>1-bedroom let</option>
+          <option>2–3 bedroom let</option>
+          <option>4+ bedroom let / whole house</option>
+          <option>B&amp;B with multiple rooms</option>
+        </select>
+        <button type="submit" class="btn">Get my quote</button>
+      </form>
+    </aside>
+  </div>
+</header>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Services</div>
+      <h2>Built around the guest-changeover day</h2>
+      <p>Every service is shaped around the narrow window between check-out and the next arrival — fast, thorough, and signed off before keys go back.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-icon">🛏️</div>
+        <h3>Turnover clean</h3>
+        <p>Full room reset between guests — linen change, bathroom sanitise, kitchen wipe-down, floors, bins and a final walkthrough.</p>
+        <div class="price">From £35 / property</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🧺</div>
+        <h3>Linen &amp; laundry</h3>
+        <p>Beds stripped, fresh linen remade, towels swapped. We can collect laundry or work with your on-site supply.</p>
+        <div class="price">Add-on or standalone</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🧴</div>
+        <h3>Restock &amp; check-in prep</h3>
+        <p>Welcome pack, tea, coffee, milk, soap, toilet paper — placed and photographed so check-in feels effortless.</p>
+        <div class="price">From £12 / property</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🧽</div>
+        <h3>Deep clean</h3>
+        <p>Periodic top-to-bottom for long-stay turnovers or end-of-season. Ovens, carpets, skirting, windowsills.</p>
+        <div class="price">Quoted on visit</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🔑</div>
+        <h3>Key handover</h3>
+        <p>Collect keys from lockbox or host, clean, then return — with a photo confirmation message before guest arrival.</p>
+        <div class="price">Included free</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">📅</div>
+        <h3>Recurring schedule</h3>
+        <p>Same cleaner, same time, every changeover day. We sync with your booking calendar so you never have to call.</p>
+        <div class="price">Priority rates</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY DEPENDABILITY ============ -->
+<section class="depend" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Why dependability matters</div>
+      <h2>The cleaner who doesn't show up costs you the next booking</h2>
+      <p>Every host has been burned by a no-show. We built this service so that never happens to you.</p>
+    </div>
+    <div class="depend-grid">
+      <blockquote class="depend-quote">
+        "I'd been let down three times by different cleaners — guests arriving to unmade beds, frantic calls on a Saturday. Turnover Cleaning Co. haven't missed a single changeover in fourteen months. That peace of mind is worth ten times the price."
+        <cite>— Helen M., 3-bed coastal let, Whitstable</cite>
+      </blockquote>
+      <ul class="depend-list">
+        <li>
+          <span class="num">1</span>
+          <div><h4>Same cleaner, every time</h4><p>You get a named, dedicated cleaner who knows your property — not a rotating agency team.</p></div>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <div><h4>Confirmation before check-in</h4><p>A photo and a message the moment the room is guest-ready. No guessing, no chasing.</p></div>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <div><h4>Backup cover, always</h4><p>If your regular cleaner is ever unavailable, a trained backup steps in — you stay notified throughout.</p></div>
+        </li>
+        <li>
+          <span class="num">4</span>
+          <div><h4>Calendar-synced</h4><p>Send us your booking calendar once and we schedule every turnover automatically. No more phone tag.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">How it works</div>
+      <h2>From quote to guest-ready in four steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Send your calendar</h3><p>Share your booking calendar or just message the next changeover date. We confirm availability same day.</p></div>
+      <div class="step"><h3>Get a fixed quote</h3><p>Per-property pricing based on size and scope. No surprise add-ons — what we quote is what you pay.</p></div>
+      <div class="step"><h3>We clean on the day</h3><p>Your dedicated cleaner arrives in the check-out window and works the full turnover to a checklist.</p></div>
+      <div class="step"><h3>Photo confirmation</h3><p>You get a "guest-ready" message with photos before the next arrival. Done.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COVERAGE ============ -->
+<section class="coverage" id="coverage">
+  <div class="wrap coverage-grid">
+    <div>
+      <div class="section-tag" style="margin-bottom:12px">Coverage</div>
+      <h2>Serving holiday lets across the region</h2>
+      <p>We currently cover the postcodes below. Right on the edge? Send us a message — we're expanding as new hosts join.</p>
+      <ul>
+        <li>CT1–CT6</li>
+        <li>ME10–ME13</li>
+        <li>TN23–TN29</li>
+        <li>BN1–BN3</li>
+        <li>RH17–RH18</li>
+        <li>+ surrounding villages</li>
+      </ul>
+    </div>
+    <div class="coverage-map">
+      <div class="pin">📍</div>
+      <h4>Not sure if you're covered?</h4>
+      <p>Pop your postcode in the form — we'll confirm within an hour during working days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="reviews" style="background:linear-gradient(180deg,#fff,var(--paper))">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Reviews</div>
+      <h2>Hosts who stopped worrying about changeover day</h2>
+    </div>
+    <div class="tst-grid">
+      <div class="tst">
+        <div class="stars">★★★★★</div>
+        <p>"The photo confirmation is genius. I can be 200 miles away and still know the room is ready. Worth every penny."</p>
+        <div class="who"><div class="avatar">JR</div><div><b>James R.</b><span>Airbnb superhost, 2 lets</span></div></div>
+      </div>
+      <div class="tst">
+        <div class="stars">★★★★★</div>
+        <p>"Same cleaner every week, knows where everything goes. Took a job off my plate I genuinely dreaded. Recommend constantly."</p>
+        <div class="who"><div class="avatar">PD</div><div><b>Priya D.</b><span>Sykes-listed cottage</span></div></div>
+      </div>
+      <div class="tst">
+        <div class="stars">★★★★★</div>
+        <p>"We run a 5-room B&amp;B and they handle every departure. Reliable, thorough, and they actually answer the phone. Rare combo."</p>
+        <div class="who"><div class="avatar">MT</div><div><b>Marta T.</b><span>B&amp;B owner, 5 rooms</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE CTA ============ -->
+<section class="quote-cta">
+  <div class="wrap">
+    <h2>Ready for a calmer changeover day?</h2>
+    <p>Send us your next turnover date and we'll come back within the hour with a fixed quote. No obligation, no hard sell.</p>
+    <a href="#contact" class="btn">Get my fixed quote →</a>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="section-tag" style="margin-bottom:12px">Get in touch</div>
+      <h2>Let's make your next turnover effortless</h2>
+      <p>Tell us about your property and your next changeover date. We'll reply within the hour during working days with availability and a fixed quote.</p>
+      <div class="contact-detail">
+        <div class="ic">📞</div>
+        <div><b>Call or WhatsApp</b><span>07700 900 000</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="ic">✉️</div>
+        <div><b>Email</b><span>hello@turnovercleaning.co.uk</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="ic">🕒</div>
+        <div><b>Working hours</b><span>Mon–Sun, 8am – 7pm</span></div>
+      </div>
+    </div>
+    <form class="quote" id="quoteForm">
+      <div class="row">
+        <div>
+          <label for="qName">Your name</label>
+          <input id="qName" type="text" placeholder="Jane Host" required />
+        </div>
+        <div>
+          <label for="qPhone">Phone</label>
+          <input id="qPhone" type="tel" placeholder="07700 900000" required />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="qPostcode">Property postcode</label>
+          <input id="qPostcode" type="text" placeholder="CT1 1AA" required />
+        </div>
+        <div>
+          <label for="qType">Property type</label>
+          <select id="qType" required>
+            <option value="">Select…</option>
+            <option>1-bedroom let</option>
+            <option>2–3 bedroom let</option>
+            <option>4+ bedroom / whole house</option>
+            <option>B&amp;B with multiple rooms</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="qDate">Next changeover date</label>
+        <input id="qDate" type="date" required />
+      </div>
+      <div>
+        <label for="qMsg">Anything we should know?</label>
+        <textarea id="qMsg" rows="3" placeholder="Linen supplied on site, lockbox at side gate, etc."></textarea>
+      </div>
+      <button type="submit" class="btn">Send quote request</button>
+      <p class="form-note">We reply within the hour during working days. No spam, ever.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><span class="brand-mark">T</span> Turnover Cleaning Co.</div>
+        <p>Dependable holiday-let turnover cleaning for B&amp;Bs, Airbnb hosts and self-catering owners. Same cleaner, every changeover, photo-confirmed before check-in.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Turnover clean</a></li>
+          <li><a href="#services">Linen &amp; laundry</a></li>
+          <li><a href="#services">Restock &amp; check-in prep</a></li>
+          <li><a href="#services">Deep clean</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Get a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Turnover Cleaning Co. All rights reserved.</span>
+      <span>Insured · DBS-checked · Calendar-synced</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><span class="ic">✓</span><span id="toastMsg">Sent — we'll be in touch within the hour.</span></div>
+
+<script>
+// Mobile nav
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Toast helper
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toastMsg');
+let toastTimer;
+function showToast(msg){
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+// Hero mini-form
+document.getElementById('miniForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const sel = document.getElementById('miniProperty');
+  if(!sel.value) return;
+  showToast('Got it — scroll down to the full form to lock in your quote.');
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+  // pre-fill the matching field
+  const qType = document.getElementById('qType');
+  for(const opt of qType.options){ if(opt.text === sel.value){ qType.value = opt.value || opt.text; break; } }
+});
+
+// Quote form — front-end only (wire up to Formspree / Vercel function later)
+document.getElementById('quoteForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('qName').value.trim();
+  if(!name) return;
+  // TODO: replace with real submission (Formspree action, or a Vercel serverless function)
+  showToast(`Thanks ${name.split(' ')[0]} — request received. We'll reply within the hour.`);
+  e.target.reset();
+});
+
+// Set min date on date picker to today
+const dateField = document.getElementById('qDate');
+if(dateField){
+  const today = new Date().toISOString().split('T')[0];
+  dateField.min = today;
+}
+</script>
+
+</body>
+</html>
