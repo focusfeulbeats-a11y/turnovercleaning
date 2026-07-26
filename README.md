@@ -1,4 +1,4 @@
-# Turnover Cleaning Co. — website
+# Prime Clean Co. — website
 
 A one-page marketing site for a holiday-let turnover cleaning business. Built as a single static `index.html` (no build step, no dependencies) — perfect for deploying on **Vercel** straight from **GitHub**.
 
@@ -54,7 +54,7 @@ Search-and-replace these placeholders in `index.html`:
 
 | Placeholder | Replace with |
 |---|---|
-| `Turnover Cleaning Co.` | your real business name (also in `<title>`, footer, nav) |
+| `Prime Clean Co.` | your real business name (also in `<title>`, footer, nav) |
 | `07700 900 000` | your phone / WhatsApp |
 | `hello@turnovercleaning.co.uk` | your email |
 | Postcode list in `#coverage` | the postcodes you actually cover |
